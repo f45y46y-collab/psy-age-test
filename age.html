@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>原生家庭影响测评</title>
+<style>
+body {font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft Yahei", sans-serif; padding: 20px; background:#f7f8fc; color:#333; line-height:1.6;}
+h1 {font-size: 24px; text-align:center; margin-bottom:6px;}
+.sub {text-align:center; font-size:13px; opacity:.7; margin-bottom:14px;}
+.question {margin: 16px 0 10px; font-weight: 600; font-size:14px;}
+.option {margin:3px 0;}
+button {border:none; padding:12px 16px; margin:10px 0; border-radius:999px; cursor:pointer; font-size:15px;}
+.btn-main {background:#7b95f7; color:#fff; width:100%;}
+.result {font-size:18px;margin-top:12px;font-weight:bold;text-align:center;}
+.card {background:#fff; border-radius:14px; padding:14px 16px; box-shadow:0 4px 14px rgba(15,23,42,.08); max-width:700px; margin:0 auto;}
+.tag {display:inline-block; font-size:11px; padding:2px 8px; border-radius:999px; background:#eef2ff; color:#4f46e5; margin-right:6px;}
+.progress {font-size:12px; text-align:right; opacity:.7; margin-top:4px;}
+</style>
+</head>
+
+<body>
+<div class="card">
+  <h1>原生家庭影响测评</h1>
+  <p class="sub">40 题深度测评，找出你现在情绪、人际和亲密关系的「核心脚本」。</p>
+  <div style="text-align:center;margin-bottom:8px;">
+    <span class="tag">情绪模式</span>
+    <span class="tag">亲密关系</span>
+    <span class="tag">自我价值感</span>
+  </div>
+
+  <div id="test"></div>
+
+  <div class="progress" id="progress"></div>
+
+<button class="btn-main" onclick="showResult()">查看我的测试结果</button>
+
+
+  <div class="result" id="result"></div>
+</div>
+
+<script>
+// 40 道题
+const questions = [
+"我很容易因为小错误而责备自己",
+"别人随口一句话会让我一直想很久",
+"我觉得无论做什么都不够好",
+"得到别人肯定对我来说非常重要",
+"当有人批评我，我会立刻紧张或难受",
+"我总觉得自己不值得被真正喜欢",
+"我不太懂如何健康表达情绪",
+"我会假装没事，不想麻烦别人",
+"我不相信会有人真正理解我",
+"我经常觉得孤独，即使身边有人",
+
+"我习惯隐藏自己的需求，不想显得脆弱",
+"我害怕被拒绝或被抛弃",
+"我会下意识迎合他人期待",
+"我很难说“不”，即使很为难",
+"我经常承担不属于我的责任",
+"我害怕让别人失望",
+"我总觉得自己欠别人什么",
+"我做决定时，总希望有人替我拍板",
+"在关系中，我容易没有安全感",
+"如果对方忽冷忽热，我会立刻焦虑",
+
+"我经常吸引到不稳定、情绪多的人",
+"我一方面渴望亲密，一方面又想逃",
+"我很难完全信任伴侣或朋友",
