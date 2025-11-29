@@ -256,7 +256,8 @@ function showResult(){
   setTimeout(()=>{
     // 注意这里路径：index 在 /psy-age-test/
     // 报告在 /psy-age-test/psy-age-test/report.html
-    window.location.href = "psy-age-test/report.html?age=" + ageCode + "&score=" + total;
+  window.location.href = `report.html?age=${age}&score=${score}`;
+
   }, 1300);
 }
 </script>
