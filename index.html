@@ -1,88 +1,108 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>灵魂心理年龄测试 · CyberShamaness</title>
 
 <style>
-body{
-  margin:0; padding:0;
-  background:radial-gradient(circle at 50% 20%, #8fa8ff 0%, #3940a0 40%, #0d1027 100%);
-  font-family:-apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft Yahei", sans-serif;
-  color:#fff; line-height:1.7; padding:26px 20px;
-}
-.wrap{max-width:760px; margin:0 auto;}
-h1{font-size:28px; text-align:center; font-weight:700; margin-top:10px;}
-.sub{text-align:center; font-size:14px; opacity:.85; margin:10px 0 16px;}
-.badge{
-  display:flex; align-items:center; justify-content:center;
-  font-size:12px; opacity:.8; margin-bottom:14px;
-}
-.badge-dot{
-  width:6px; height:6px; background:#9daaff; border-radius:50%; margin-right:6px;
-  box-shadow:0 0 8px #a8b7ff;
-}
-.tags{text-align:center; margin-bottom:18px;}
-.tag{
-  display:inline-block;
-  font-size:11px; padding:3px 10px; margin:0 4px;
-  border-radius:999px;
-  background:rgba(255,255,255,.12);
-  backdrop-filter:blur(6px);
+body {
+  margin:0;
+  padding:26px 18px 40px;
+  font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+  background: radial-gradient(circle at top, #222 0%, #000 60%);
+  color:#f2f2f7;
+  line-height:1.7;
 }
 
-.card{
-  background:rgba(255,255,255,.08);
-  border:1px solid rgba(255,255,255,.12);
-  border-radius:16px;
-  padding:18px 18px 22px;
-  box-shadow:0 12px 36px rgba(0,0,0,.35);
-  backdrop-filter:blur(12px);
-}
+.wrap { max-width:760px; margin:0 auto; }
 
-.question{
-  margin-top:14px;
-  font-weight:600;
-  font-size:15px;
-}
-.option{margin:4px 0;}
-.option label{font-size:14px;}
-
-button{
-  width:100%; margin-top:16px; border:none; border-radius:12px;
-  background:linear-gradient(135deg, #7a88ff, #b0c2ff);
-  padding:14px 0; color:#000; font-size:16px; font-weight:700;
-  cursor:pointer;
-  transition:transform .16s ease, box-shadow .16s ease;
-  box-shadow:0 10px 26px rgba(123,149,255,.5);
-}
-button:hover{transform:translateY(-2px);}
-button:active{transform:translateY(1px) scale(.98);}
-
-.progress{
-  text-align:center; margin-bottom:8px;
-  font-size:13px; opacity:.8;
-}
-
-.result{
-  margin-top:12px;
+h1 {
+  font-size:26px;
   text-align:center;
-  color:#d7dcff;
+  margin:22px 0 10px;
+  font-weight:700;
+  background: linear-gradient(135deg,#8ea7ff,#d6b6ff,#ffd6fa);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.sub {
+  text-align:center;
+  opacity:.75;
   font-size:14px;
+  margin-bottom:16px;
 }
 
-.foot{
-  margin-top:22px;
+.badge {
   text-align:center;
-  font-size:11px;
-  opacity:.7;
-  line-height:1.6;
+  font-size:12px;
+  margin-top:10px;
+  letter-spacing:1px;
+  opacity:.88;
 }
 
-@media(min-width:768px){
-  h1{font-size:32px;}
-  .card{padding:26px 26px 30px;}
+.tag {
+  display:inline-block;
+  padding:4px 10px;
+  border-radius:999px;
+  background:rgba(255,255,255,.08);
+  font-size:12px;
+  margin:0 4px 8px;
+  border:1px solid rgba(255,255,255,.15);
+}
+
+.tags { text-align:center; margin-bottom:10px; }
+
+.card {
+  background:rgba(255,255,255,.06);
+  padding:20px 18px;
+  border-radius:18px;
+  box-shadow:0 8px 28px rgba(0,0,0,.45);
+  backdrop-filter:blur(14px);
+}
+
+.question {
+  margin:16px 0 8px;
+  font-weight:600;
+}
+
+label { display:block; margin:3px 0; cursor:pointer; }
+
+button {
+  width:100%;
+  margin-top:20px;
+  padding:14px;
+  border:none;
+  border-radius:999px;
+  font-size:16px;
+  background:linear-gradient(135deg,#7b95ff,#b782ff,#ff98eb);
+  color:#fff;
+  box-shadow:0 10px 30px rgba(124,95,255,.45);
+  cursor:pointer;
+  transition:.18s;
+}
+button:hover { transform:translateY(-2px) scale(1.03); }
+
+.progress {
+  text-align:center;
+  opacity:.75;
+  font-size:13px;
+  margin-bottom:14px;
+}
+
+.result {
+  margin-top:12px;
+  font-size:14px;
+  text-align:center;
+  opacity:.85;
+}
+
+.foot {
+  text-align:center;
+  margin-top:24px;
+  font-size:11px;
+  opacity:.6;
 }
 </style>
 </head>
@@ -90,135 +110,129 @@ button:active{transform:translateY(1px) scale(.98);}
 <body>
 <div class="wrap">
 
-  <!-- 顶部品牌 -->
-  <div class="badge">
-    <span class="badge-dot"></span>
-    CYBERSHAMANESS · 灵魂心理年龄测试
-  </div>
+  <div class="badge">CYBERSHAMANESS · 灵魂心理年龄测试</div>
 
   <h1>你的灵魂，究竟几岁了？</h1>
-  <p class="sub">这不是身份证上的年龄，而是你内在世界的真实年龄。</p>
+
+  <p class="sub">
+    40 题深度分析：你的情绪模式、关系反应、内在小孩、灵魂成熟度。
+  </p>
 
   <div class="tags">
     <span class="tag">心理年龄</span>
-    <span class="tag">潜意识模式</span>
-    <span class="tag">原生家庭印记</span>
-    <span class="tag">CyberShamaness</span>
+    <span class="tag">内在小孩</span>
+    <span class="tag">灵魂阶段</span>
+    <span class="tag">情绪模式</span>
   </div>
 
   <div class="card">
     <div class="progress" id="progress"></div>
     <div id="test"></div>
-
     <button onclick="showResult()">查看我的灵魂年龄</button>
     <div class="result" id="result"></div>
   </div>
 
-  <div class="foot">
-    本测试仅用于自我觉察，不构成临床诊断。<br>
-    © CyberShamaness · 心灵脚本实验室
-  </div>
+  <div class="foot">CyberShamaness © 灵魂测试实验室</div>
+
 </div>
 
 <script>
-// =============================
-// 40 题完整题库
-// =============================
+// ----------------------------
+// 40 道心理年龄题目
+// ----------------------------
 const questions = [
-"我会因为别人一句话而想很久",
-"我经常把情绪憋在心里",
-"我会突然什么都不想做",
-"我渴望被理解，但又害怕被看见",
-"我经常对未来感到不安",
-"我对亲密关系的变化特别敏感",
-"我有时会觉得世界很吵，我想躲起来",
-"我很容易被自己的想象左右",
-"我表面很独立，内心却很脆弱",
-"我比同龄人成熟，但也更疲惫",
+  "我很难坚持一件事很久",
+  "我经常想逃离现在的生活",
+  "我会在深夜突然变得很清醒",
+  "我很容易被情绪左右",
+  "当关系稍微有点变化，我立刻能察觉",
+  "我经常感到空虚，好像少了点什么",
+  "我更喜欢安静、独处而不是社交",
+  "我经常觉得自己不够好",
+  "我有时会突然变得特别敏感",
+  "我对陌生人很冷，对亲近的人很依赖",
 
-"我经常觉得自己“不够好”",
-"我会不断回想发生过的事情",
-"我很容易因为小事情绪波动",
-"我不喜欢麻烦别人，但又希望有人懂我",
-"我经常否认自己的需求",
-"我害怕被拒绝",
-"我习惯压着情绪不爆发",
-"我经常怀疑自己是否值得被爱",
-"我会突然对人生感到疲倦",
-"我经常觉得自己格格不入",
+  "我经常幻想另一种人生",
+  "我会对未来感到焦虑",
+  "我比同龄人成熟，但有时又特别孩子气",
+  "我总觉得自己“不是这个世界的普通人”",
+  "我常常想很多别人不会想的事情",
+  "我对爱特别敏感但又害怕被伤害",
+  "我对批评很敏感",
+  "我对陌生环境不太有安全感",
+  "我经常突然陷入情绪中",
+  "我常常觉得自己在“伪装”",
 
-"我有时会幻想另一种人生",
-"我对很多事情提不起兴趣",
-"我经常想躲到一个安全的地方",
-"我很难轻易相信别人",
-"我对亲近的人又依赖又防备",
-"我经常被自己的情绪困住",
-"我很难坚持长期的事情",
-"我会对未来突然充满希望又突然绝望",
-"我经常压抑真实的自己",
-"我觉得自己总是“太多”或“不够”",
+  "我总觉得自己在寻找什么但不知道是什么",
+  "我内心深处一直想被理解",
+  "我经常不敢麻烦别人",
+  "我会突然想要消失一阵子",
+  "我失望的时候反应很极端",
+  "我需要很久才能忘记一段经历",
+  "我经常思考人生意义",
+  "我不喜欢被别人控制",
+  "我常常觉得自己与众不同",
+  "我心里总有一个“长不大的部分”",
 
-"我经常对小事过度敏感",
-"我内心比别人更混乱，但外表很平静",
-"我缺乏安全感",
-"我喜欢一个人待着，但又害怕孤独",
-"我渴望被抱紧，但又抗拒亲密",
-"我经常觉得现实不像自己的生活",
-"我会被情绪影响一天",
-"我经常在深夜变得特别清醒",
-"我觉得自己像在扮演人生",
-"我总觉得自己不是普通人"
+  "我会被某些小事瞬间刺痛",
+  "我有时会感觉自己灵魂很老",
+  "我觉得很多人都无法真正理解我",
+  "我常常凭直觉行动",
+  "我有时很冷静，有时又很冲动",
+  "我觉得自己比外表更疲惫",
+  "我经常讨厌当下的自己但又改变不了",
+  "我会突然陷入深度自我怀疑",
+  "我常常觉得自己像“两个不同的人”",
+  "我觉得自己的人生像在寻找出口"
 ];
 
-// =============================
 // 渲染题目
-// =============================
 let html = "";
-for(let i=0;i<questions.length;i++){
+for (let i=0; i<questions.length; i++){
   html += `
     <div class="question">${i+1}. ${questions[i]}</div>
-    <div class="option"><label><input type="radio" name="q${i}" value="3"> 非常符合</label></div>
-    <div class="option"><label><input type="radio" name="q${i}" value="2"> 比较符合</label></div>
-    <div class="option"><label><input type="radio" name="q${i}" value="1"> 偶尔符合</label></div>
-    <div class="option"><label><input type="radio" name="q${i}" value="0"> 不符合</label></div>
+    <label><input type="radio" name="q${i}" value="3"> 非常符合</label>
+    <label><input type="radio" name="q${i}" value="2"> 比较符合</label>
+    <label><input type="radio" name="q${i}" value="1"> 偶尔符合</label>
+    <label><input type="radio" name="q${i}" value="0"> 不太符合 / 完全不符合</label>
+    <br><br>
   `;
 }
-document.getElementById("test").innerHTML = html;
-document.getElementById("progress").innerText =
-  `共 ${questions.length} 题 · 建议用 5 分钟认真作答`;
 
-// =============================
-// 计算得分 + 跳转
-// =============================
+document.getElementById("test").innerHTML = html;
+document.getElementById("progress").innerText = `共 ${questions.length} 题 · 建议用 3～5 分钟完成`;
+
+// 计算结果
 function showResult(){
   let total = 0;
   let answered = 0;
 
-  for(let i=0;i<questions.length;i++){
-    const checked = document.querySelector(`input[name="q${i}"]:checked`);
-    if(checked){
+  for(let i=0; i<questions.length; i++){
+    const ch = document.querySelector(`input[name="q${i}"]:checked`);
+    if(ch){
       answered++;
-      total += parseInt(checked.value);
+      total += parseInt(ch.value);
     }
   }
 
   if(answered < questions.length * 0.7){
-    alert("你还有不少题没做～\n至少完成 70% 再看结果会更真实。");
+    alert("还有不少题没答完～\n至少完成 70% 再看结果才准确哦。");
     return;
   }
 
-  // 根据分数计算灵魂年龄
   let age = "28";
-  if(total <= 40) age = "60";      // 神谕者
-  else if(total <= 70) age = "35"; // 夜行巫者
-  else if(total <= 90) age = "28"; // 行走者
-  else if(total <= 110) age = "21";// 初火旅者
-  else if(total <= 120) age = "14";// 破茧少年
-  else age = "7";                 // 纯白灵体
 
-  document.getElementById("result").innerHTML = "正在生成报告…";
+  if(total <= 20) age = "60";
+  else if(total <= 30) age = "35";
+  else if(total <= 40) age = "28";
+  else if(total <= 50) age = "21";
+  else if(total <= 60) age = "14";
+  else age = "7";
 
-  setTimeout(()=>{
+  document.getElementById("result").innerHTML =
+    "你的灵魂年龄正在生成中…";
+
+  setTimeout(() => {
     window.location.href = `report.html?age=${age}&score=${total}`;
   }, 1200);
 }
