@@ -1,69 +1,264 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>原生家庭影响测评</title>
-<style>
-body {font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft Yahei", sans-serif; padding: 20px; background:#f7f8fc; color:#333; line-height:1.6;}
-h1 {font-size: 24px; text-align:center; margin-bottom:6px;}
-.sub {text-align:center; font-size:13px; opacity:.7; margin-bottom:14px;}
-.question {margin: 16px 0 10px; font-weight: 600; font-size:14px;}
-.option {margin:3px 0;}
-button {border:none; padding:12px 16px; margin:10px 0; border-radius:999px; cursor:pointer; font-size:15px;}
-.btn-main {background:#7b95f7; color:#fff; width:100%;}
-.result {font-size:18px;margin-top:12px;font-weight:bold;text-align:center;}
-.card {background:#fff; border-radius:14px; padding:14px 16px; box-shadow:0 4px 14px rgba(15,23,42,.08); max-width:700px; margin:0 auto;}
-.tag {display:inline-block; font-size:11px; padding:2px 8px; border-radius:999px; background:#eef2ff; color:#4f46e5; margin-right:6px;}
-.progress {font-size:12px; text-align:right; opacity:.7; margin-top:4px;}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>灵魂心理年龄测试｜CyberShamaness</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{
+      min-height:100vh;
+      padding:24px 16px 40px;
+      font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft Yahei",sans-serif;
+      color:#f9fafb;
+      background:
+        radial-gradient(circle at 10% 20%,rgba(129,140,248,0.25),transparent 55%),
+        radial-gradient(circle at 80% 0%,rgba(236,72,153,0.16),transparent 55%),
+        radial-gradient(circle at 10% 90%,rgba(45,212,191,0.18),transparent 55%),
+        #020617;
+    }
+    .wrap{
+      max-width:860px;
+      margin:0 auto;
+    }
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding:3px 10px;
+      border-radius:999px;
+      border:1px solid rgba(148,163,184,.7);
+      font-size:11px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:#e5e7eb;
+      background:rgba(15,23,42,.7);
+      backdrop-filter:blur(10px);
+    }
+    .badge-dot{
+      width:6px;
+      height:6px;
+      border-radius:999px;
+      background:conic-gradient(from 180deg,#22d3ee,#a855f7,#f97316,#22d3ee);
+    }
+    h1{
+      font-size:26px;
+      line-height:1.25;
+      margin:14px 0 6px;
+    }
+    .sub{
+      font-size:13px;
+      opacity:.8;
+      max-width:520px;
+    }
+    .tags{
+      margin:12px 0 18px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+    .tag{
+      font-size:11px;
+      padding:3px 10px;
+      border-radius:999px;
+      background:rgba(15,23,42,.85);
+      border:1px solid rgba(148,163,184,.5);
+      color:#e5e7eb;
+    }
+    .card{
+      margin-top:18px;
+      background:rgba(15,23,42,.9);
+      border-radius:18px;
+      padding:16px 14px 18px;
+      box-shadow:
+        0 24px 80px rgba(15,23,42,.9),
+        0 0 0 1px rgba(148,163,184,.35);
+      backdrop-filter:blur(14px);
+    }
+    .progress{
+      font-size:12px;
+      text-align:right;
+      opacity:.8;
+      margin-bottom:6px;
+    }
+    .question{
+      margin:16px 0 10px;
+      font-size:14px;
+      font-weight:600;
+      color:#e5e7eb;
+    }
+    .option{
+      margin:4px 0;
+      font-size:13px;
+    }
+    .option label{
+      display:flex;
+      align-items:center;
+      gap:6px;
+      padding:6px 10px;
+      border-radius:999px;
+      background:rgba(15,23,42,.9);
+      border:1px solid rgba(51,65,85,.9);
+      cursor:pointer;
+      transition:all .18s ease-out;
+    }
+    .option input{accent-color:#818cf8;}
+    .option label:hover{
+      border-color:#818cf8;
+      box-shadow:0 0 0 1px rgba(129,140,248,.7);
+    }
+    button{
+      width:100%;
+      margin-top:18px;
+      border:none;
+      border-radius:999px;
+      padding:12px 16px;
+      font-size:15px;
+      font-weight:600;
+      letter-spacing:.05em;
+      text-transform:uppercase;
+      cursor:pointer;
+      background:linear-gradient(120deg,#6366f1,#8b5cf6,#ec4899);
+      color:#f9fafb;
+      box-shadow:0 18px 45px rgba(79,70,229,.7);
+      transition:transform .16s ease-out,box-shadow .16s ease-out,filter .16s ease-out;
+    }
+    button:active{
+      transform:translateY(1px) scale(.99);
+      box-shadow:0 10px 26px rgba(55,48,163,.9);
+      filter:brightness(.96);
+    }
+    .result{
+      margin-top:10px;
+      font-size:13px;
+      text-align:center;
+      opacity:.85;
+    }
+    .foot{
+      margin-top:18px;
+      font-size:11px;
+      opacity:.65;
+      text-align:center;
+    }
+    @media (min-width:768px){
+      body{padding:40px 24px 52px;}
+      h1{font-size:30px;}
+      .card{padding:22px 20px 22px;}
+    }
+  </style>
 </head>
-
 <body>
-<div class="card">
-  <h1>原生家庭影响测评</h1>
-  <p class="sub">40 题深度测评，找出你现在情绪、人际和亲密关系的「核心脚本」。</p>
-  <div style="text-align:center;margin-bottom:8px;">
-    <span class="tag">情绪模式</span>
-    <span class="tag">亲密关系</span>
-    <span class="tag">自我价值感</span>
+  <div class="wrap">
+    <div class="badge">
+      <span class="badge-dot"></span>
+      CYBERSHAMANESS · 灵魂心理年龄测试
+    </div>
+
+    <h1>你的灵魂，究竟几岁了？</h1>
+    <p class="sub">
+      这不是身份证上的年龄，而是你内在世界的真实年龄：它决定了你如何爱人、如何生气、如何逃跑、如何渴望被抱紧。
+    </p>
+
+    <div class="tags">
+      <span class="tag">心理年龄</span>
+      <span class="tag">原生家庭印记</span>
+      <span class="tag">内在小孩</span>
+      <span class="tag">灵魂阶段</span>
+    </div>
+
+    <div class="card">
+      <div class="progress" id="progress"></div>
+      <div id="test"></div>
+      <button onclick="showResult()">查看我的灵魂年龄</button>
+      <div class="result" id="result"></div>
+    </div>
+
+    <div class="foot">
+      本测试仅用于自我觉察与探索，不构成临床诊断。<br>
+      CyberShamaness · 心灵脚本实验室
+    </div>
   </div>
 
-  <div id="test"></div>
-
-  <div class="progress" id="progress"></div>
-
-<button class="btn-main" onclick="showResult()">查看我的测试结果</button>
-
-
-  <div class="result" id="result"></div>
-</div>
-
 <script>
-// 40 道题
 const questions = [
-"我很容易因为小错误而责备自己",
-"别人随口一句话会让我一直想很久",
-"我觉得无论做什么都不够好",
-"得到别人肯定对我来说非常重要",
-"当有人批评我，我会立刻紧张或难受",
-"我总觉得自己不值得被真正喜欢",
-"我不太懂如何健康表达情绪",
-"我会假装没事，不想麻烦别人",
-"我不相信会有人真正理解我",
-"我经常觉得孤独，即使身边有人",
+  "我会因为别人一句话而想很久",
+  "我经常把情绪压住，不让别人看到",
+  "我会突然很想一个人躺着，谁都不要理",
+  "当别人突然冷淡，我会立刻胡思乱想",
+  "有时候我感觉自己好像格格不入",
+  "我会把别人放得比自己重要",
+  "我很难坚持一件事很久",
+  "我经常想逃离现在的生活",
+  "我会在深夜突然变得很清醒",
+  "我很容易被情绪左右",
+  "当关系稍微有点变化，我立刻能察觉",
+  "我经常感到空虚，好像少了点什么",
+  "我更喜欢安静、独处而不是社交",
+  "我经常觉得自己不够好",
+  "我有时会突然变得特别敏感",
+  "我对陌生人很冷，对亲近的人很依赖",
+  "我经常幻想另一种人生",
+  "我会对未来感到焦虑",
+  "我比同龄人成熟，但有时又特别孩子气",
+  "我总觉得自己“不是这个世界的普通人”"
+];
 
-"我习惯隐藏自己的需求，不想显得脆弱",
-"我害怕被拒绝或被抛弃",
-"我会下意识迎合他人期待",
-"我很难说“不”，即使很为难",
-"我经常承担不属于我的责任",
-"我害怕让别人失望",
-"我总觉得自己欠别人什么",
-"我做决定时，总希望有人替我拍板",
-"在关系中，我容易没有安全感",
-"如果对方忽冷忽热，我会立刻焦虑",
+let html = "";
+for(let i=0;i<questions.length;i++){
+  html += `
+  <div class="question">${i+1}. ${questions[i]}</div>
+  <div class="option">
+    <label><input type="radio" name="q${i}" value="3"> 非常符合</label>
+  </div>
+  <div class="option">
+    <label><input type="radio" name="q${i}" value="2"> 比较符合</label>
+  </div>
+  <div class="option">
+    <label><input type="radio" name="q${i}" value="1"> 偶尔符合</label>
+  </div>
+  <div class="option">
+    <label><input type="radio" name="q${i}" value="0"> 不太符合 / 完全不符合</label>
+  </div>
+  `;
+}
+document.getElementById("test").innerHTML = html;
+document.getElementById("progress").innerText =
+  `共 ${questions.length} 题 · 建议用 3～5 分钟认真作答`;
 
-"我经常吸引到不稳定、情绪多的人",
-"我一方面渴望亲密，一方面又想逃",
-"我很难完全信任伴侣或朋友",
+function showResult(){
+  let total = 0;
+  let answered = 0;
+
+  for(let i=0;i<questions.length;i++){
+    const checked = document.querySelector(`input[name="q${i}"]:checked`);
+    if(checked){
+      answered++;
+      total += parseInt(checked.value);
+    }
+  }
+
+  if(answered < questions.length * 0.7){
+    alert("还有不少题没有作答～\n至少完成 70% 再看结果，才更接近你的真实状态。");
+    return;
+  }
+
+  let ageCode = "28"; // 默认给个中间值
+  if(total <= 20) ageCode = "60";       // 60 岁 · 神谕者
+  else if(total <= 30) ageCode = "35";  // 35 岁 · 夜行巫者
+  else if(total <= 40) ageCode = "28";  // 28 岁 · 行走者
+  else if(total <= 50) ageCode = "21";  // 21 岁 · 初火旅者
+  else if(total <= 60) ageCode = "14";  // 14 岁 · 破茧少年
+  else ageCode = "7";                   // 7 岁 · 纯白灵体
+
+  document.getElementById("result").innerHTML =
+    "你的测试已完成 ✅<br>正在为你生成灵魂年龄报告…";
+
+  setTimeout(()=>{
+    // 注意这里路径：index 在 /psy-age-test/
+    // 报告在 /psy-age-test/psy-age-test/report.html
+    window.location.href = "psy-age-test/report.html?age=" + ageCode + "&score=" + total;
+  }, 1300);
+}
+</script>
+</body>
+</html>
