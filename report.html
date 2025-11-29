@@ -1,410 +1,278 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>灵魂心理年龄报告｜CyberShamaness</title>
-  <style>
-    *{box-sizing:border-box;margin:0;padding:0;}
-    body{
-      min-height:100vh;
-      padding:24px 16px 40px;
-      font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft Yahei",sans-serif;
-      color:#e5e7eb;
-      background:
-        radial-gradient(circle at 10% 10%,rgba(59,130,246,.3),transparent 55%),
-        radial-gradient(circle at 80% 0%,rgba(236,72,153,.25),transparent 55%),
-        radial-gradient(circle at 10% 90%,rgba(45,212,191,.25),transparent 55%),
-        #020617;
-    }
-    .wrap{max-width:860px;margin:0 auto;}
-    .badge{
-      display:inline-flex;
-      align-items:center;
-      gap:6px;
-      padding:4px 11px;
-      border-radius:999px;
-      background:rgba(15,23,42,.85);
-      border:1px solid rgba(148,163,184,.7);
-      font-size:11px;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-    }
-    .badge-dot{
-      width:7px;height:7px;border-radius:999px;
-      background:conic-gradient(from 120deg,#22d3ee,#a855f7,#f97316,#22d3ee);
-      box-shadow:0 0 12px rgba(129,140,248,.9);
-    }
-    h1{
-      font-size:26px;
-      margin:16px 0 6px;
-    }
-    .sub{font-size:13px;opacity:.8;max-width:540px;}
-    .card{
-      margin-top:18px;
-      background:rgba(15,23,42,.95);
-      border-radius:20px;
-      padding:20px 16px 22px;
-      box-shadow:
-        0 30px 90px rgba(15,23,42,.95),
-        0 0 0 1px rgba(148,163,184,.45);
-      position:relative;
-      overflow:hidden;
-    }
-    .card::before{
-      content:"";
-      position:absolute;
-      inset:-40%;
-      background:radial-gradient(circle at 0% 0%,rgba(129,140,248,.27),transparent 55%);
-      opacity:.8;
-      pointer-events:none;
-    }
-    .card-inner{position:relative;z-index:1;}
-    .pill-age{
-      display:inline-flex;
-      align-items:baseline;
-      gap:6px;
-      padding:6px 12px;
-      border-radius:999px;
-      background:rgba(15,23,42,.9);
-      border:1px solid rgba(129,140,248,.85);
-      color:#e5e7eb;
-      margin-bottom:10px;
-      font-size:13px;
-    }
-    .pill-age span.big{
-      font-size:22px;
-      font-weight:700;
-      color:#c7d2fe;
-    }
-    .pill-role{
-      display:inline-flex;
-      align-items:center;
-      gap:6px;
-      padding:3px 10px;
-      border-radius:999px;
-      background:rgba(30,64,175,.7);
-      border:1px solid rgba(191,219,254,.7);
-      font-size:11px;
-      color:#dbeafe;
-      margin-bottom:8px;
-    }
-    h2{
-      font-size:18px;
-      margin:8px 0 10px;
-    }
-    .section{
-      margin-top:14px;
-      font-size:13px;
-      line-height:1.7;
-    }
-    .section-title{
-      font-weight:600;
-      margin-bottom:4px;
-      color:#e5e7eb;
-    }
-    .section p{opacity:.9;margin-bottom:4px;}
-    .chips{
-      margin-top:10px;
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
-      font-size:11px;
-    }
-    .chip{
-      padding:4px 10px;
-      border-radius:999px;
-      border:1px solid rgba(148,163,184,.6);
-      background:rgba(15,23,42,.9);
-    }
-    .divider{
-      margin:16px 0;
-      height:1px;
-      background:linear-gradient(90deg,rgba(148,163,184,0),rgba(148,163,184,.75),rgba(148,163,184,0));
-    }
-    .cta{
-      margin-top:10px;
-      font-size:13px;
-      opacity:.9;
-    }
-    .cta strong{color:#c4b5fd;}
-    .mini{
-      margin-top:18px;
-      font-size:11px;
-      opacity:.65;
-      text-align:center;
-    }
-    a.btn{
-      display:inline-flex;
-      margin-top:10px;
-      padding:8px 14px;
-      border-radius:999px;
-      font-size:12px;
-      font-weight:600;
-      text-decoration:none;
-      background:linear-gradient(120deg,#6366f1,#8b5cf6,#ec4899);
-      color:#f9fafb;
-      box-shadow:0 14px 40px rgba(79,70,229,.8);
-    }
-    @media(min-width:768px){
-      body{padding:40px 24px 52px;}
-      h1{font-size:30px;}
-      .card{padding:24px 22px 26px;}
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>灵魂心理年龄报告 · CyberShamaness</title>
+
+<!-- 字体 & 背景 -->
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;600&display=swap');
+
+  body{
+    margin:0;
+    padding:0;
+    font-family:"Noto Sans SC",sans-serif;
+    background: radial-gradient(circle at 50% 20%, #a6b8ff 0%, #6f7bf7 35%, #2e2d42 100%);
+    color:#fff;
+    min-height:100vh;
+    overflow-x:hidden;
+  }
+
+  .wrap{
+    max-width:720px;
+    margin:0 auto;
+    padding:32px 20px 60px;
+    text-align:center;
+  }
+
+  .badge{
+    font-size:13px;
+    opacity:.85;
+    margin-bottom:12px;
+    letter-spacing:1px;
+  }
+
+  .age-num{
+    font-size:54px;
+    font-weight:700;
+    margin:12px 0 6px;
+    color:#fff;
+    text-shadow:0 0 22px rgba(255,255,255,.7);
+  }
+
+  .age-name{
+    font-size:22px;
+    margin-bottom:18px;
+    font-weight:600;
+  }
+
+  .score-box{
+    margin:20px auto 30px;
+    padding:14px 20px;
+    background:rgba(255,255,255,.14);
+    border-radius:12px;
+    display:inline-block;
+    font-size:14px;
+  }
+
+  .section{
+    text-align:left;
+    background:rgba(255,255,255,.13);
+    padding:20px 18px;
+    border-radius:16px;
+    margin:20px 0;
+    line-height:1.75;
+    backdrop-filter:blur(6px);
+  }
+
+  .section h2{
+    margin:0 0 10px;
+    font-size:18px;
+    font-weight:600;
+  }
+
+  .footer{
+    opacity:.65;
+    margin-top:46px;
+    font-size:12px;
+  }
+</style>
 </head>
+
 <body>
 <div class="wrap">
-  <div class="badge">
-    <span class="badge-dot"></span>
-    CYBERSHAMANESS · SOUL AGE REPORT
+
+  <div class="badge">CYBERSHAMANESS · 灵魂心理年龄报告</div>
+
+  <div id="ageDisplay" class="age-num">--</div>
+  <div id="ageName" class="age-name"></div>
+
+  <div class="score-box" id="scoreBox"></div>
+
+  <div id="content"></div>
+
+  <div class="footer">
+    本报告为灵魂心理阶段的象征性抽象模型，用于自我觉察。<br>
+    © CyberShamaness · 心灵脚本实验室
   </div>
 
-  <h1>你的灵魂心理年龄报告</h1>
-  <p class="sub" id="summary">
-    正在解析你的答题轨迹与情绪模式…
-  </p>
-
-  <div class="card">
-    <div class="card-inner" id="reportContent">
-      <!-- JS 会在这里插入具体内容 -->
-    </div>
-  </div>
-
-  <div class="mini">
-    本报告仅用于自我觉察与思考，不替代专业治疗或诊断。<br>
-    如果你正在经历严重情绪困扰，请优先照顾好自己，并在需要的时候寻求专业帮助。
-  </div>
 </div>
 
 <script>
-function getQueryParam(name){
-  const url = new URL(window.location.href);
-  return url.searchParams.get(name);
-}
+// 解析 URL 参数
+const url = new URL(window.location.href);
+const age = url.searchParams.get("age");
+const score = url.searchParams.get("score");
 
-const ageCode = getQueryParam("age") || "28";
-const score = getQueryParam("score");
+// 灵魂年龄对应文案
+const data = {
 
-const profiles = {
   "7": {
-    label: "7 岁 · 纯白灵体",
-    tags: ["高度敏感","需要极高安全感","渴望被无条件接住"],
-    summary: "你的灵魂非常年轻、通透，对世界的好奇和直觉都还没被彻底磨平。",
-    blocks: [
-      {
-        title:"你的状态像什么？",
-        text:[
-          "你像一个始终睁大眼睛的小孩，对一切都敏感、好奇、真诚。",
-          "你很容易被外界的情绪和氛围影响，一点点变动就会让你心里翻涌很多感觉。"
-        ]
-      },
-      {
-        title:"你最深的需要",
-        text:[
-          "你最需要的是被安全、稳定、温柔地对待——有人可以在你慌乱的时候，抱住你，说一句“没事，有我在”。",
-          "当你开始学会区分：这是我的情绪，还是别人的情绪时，你会慢慢长出真正的保护力。"
-        ]
-      },
-      {
-        title:"给你的提醒",
-        text:[
-          "敏感不是缺点，而是极罕见的雷达。你需要做的不是关掉它，而是学会调节音量。",
-          "别再用“太脆弱”“太幼稚”羞辱自己，你只是比别人更早感知到风向而已。"
-        ]
-      }
-    ]
+    title: "7 岁 · 纯白灵体 Pure Child",
+    content: `
+    <div class="section">
+      <h2>你的灵魂像极了「刚落地的光」</h2>
+      你拥有极高的直觉、感受力和灵性敏锐度。你的情绪不是脆弱，而是“与世界高度连接”的表现。
+      <br><br>
+      你对爱和善意特别敏感，一点点忽冷忽热都会让你受伤。但你的世界也最容易因为一个拥抱、一句理解而重新亮起来。
+    </div>
+
+    <div class="section">
+      <h2>你的力量来自：纯真与感知</h2>
+      你比任何人都更容易看到世界的美，也更容易被世界刺痛。
+      <br><br>
+      你的灵魂年龄小，并不是幼稚，而是 <b>你保留了别人早就丢掉的“真实”</b>。
+    </div>
+
+    <div class="section">
+      <h2>你现在最需要的</h2>
+      安全、肯定、温柔的关系。
+      <br><br>
+      你的灵魂在寻找“一个能安心放松的人/地方”，一旦找到，你会成长得非常快。
+    </div>
+    `
   },
-  "14":{
-    label:"14 岁 · 破茧少年",
-    tags:["情绪起伏","渴望被理解","在长大和不想长大之间摇摆"],
-    summary:"你正处在“撕开旧壳”的阶段，一半是孩子，一半是大人。",
-    blocks:[
-      {
-        title:"你的状态像什么？",
-        text:[
-          "你已经不再满足于“乖、懂事、听话”的角色，但内心又害怕真的长大、害怕承担责任。",
-          "你会时不时炸毛、失控、突然 emo，那不是矫情，是灵魂在拒绝继续被压着。"
-        ]
-      },
-      {
-        title:"你最深的需要",
-        text:[
-          "你需要的是一种“被允许不完美”的空间——可以搞砸、可以迷茫、可以试错，但不会因此被抛弃。",
-          "当有人愿意认真的听你讲废话、听你讲不完整的想法，你会慢慢长出一种新的自信。"
-        ]
-      },
-      {
-        title:"给你的提醒",
-        text:[
-          "你现在所有的矛盾感，其实都是在为未来更完整的自己腾位置。",
-          "不要急着给自己贴标签，你可以既敏感又坚定、既幼稚又通透，那就是你独特的质地。"
-        ]
-      }
-    ]
+
+  "14": {
+    title: "14 岁 · 破茧少年 The Awakener",
+    content: `
+    <div class="section">
+      <h2>你正在经历「觉醒的痛」</h2>
+      你已经开始看清很多事情：关系、自己、世界 —— 但还没有完全学会如何使用这些觉醒带来的力量。
+      <br><br>
+      所以你会有：情绪敏感、容易焦虑、想靠近又想退后这些矛盾。
+    </div>
+
+    <div class="section">
+      <h2>你的力量来自：敏感 + 渴望改变</h2>
+      你痛，是因为你正在“长成为真正的自己”。  
+      你敏感，是因为你能看见别人忽略的细节。
+      <br><br>
+      你的灵魂正在破壳，这是非常珍贵的阶段。
+    </div>
+
+    <div class="section">
+      <h2>你现在最需要的</h2>
+      理解、陪伴、以及允许自己“不完美”。
+      <br><br>
+      你越接纳自己真实的样子，你越强大。
+    </div>
+    `
   },
-  "21":{
-    label:"21 岁 · 初火旅者",
-    tags:["渴望自由","想离开旧环境","开始质疑一切"],
-    summary:"你的灵魂已经走出了原生家庭的剧本，正在为自己的人生点第一把火。",
-    blocks:[
-      {
-        title:"你的状态像什么？",
-        text:[
-          "你会突然想换城市、换圈子、换一种活法，对一成不变的生活感到窒息。",
-          "你开始意识到：很多焦虑不是“我有问题”，而是整个系统在消耗你。"
-        ]
-      },
-      {
-        title:"你最深的需要",
-        text:[
-          "你需要的是“空间”——可以探索、可以试错、可以做一点点不被理解的选择。",
-          "当你开始为自己的人生负责，而不是只在意别人眼中的“成功”，你的火会真正点燃。"
-        ]
-      },
-      {
-        title:"给你的提醒",
-        text:[
-          "别把每一次迷茫都当作失败，那其实是你灵魂在更新地图。",
-          "你不是一事无成，你只是站在新的起点上，旧的那套规则已经不适合你了。"
-        ]
-      }
-    ]
+
+  "21": {
+    title: "21 岁 · 初火旅者 The Firewalker",
+    content: `
+    <div class="section">
+      <h2>你的灵魂正在燃烧</h2>
+      你有一股强烈的想要“开始新生活”的力量。
+      <br><br>
+      你渴望探索、创造、逃离束缚、尝试新的身份。
+      <br><br>
+      你内心有火，但你还在学习如何把这团火用在正确的地方。
+    </div>
+
+    <div class="section">
+      <h2>你的力量来自：行动 + 自我觉醒</h2>
+      你不甘于原地，这让你比别人更容易突破人生的瓶颈。
+      <br><br>
+      你是那种“一旦踩对节奏就能爆发潜力”的灵魂。
+    </div>
+
+    <div class="section">
+      <h2>你现在最需要的</h2>
+      明确方向、减少分心、以及更坚定的自我认同。
+      <br><br>
+      你的未来不需要被别人定义。
+    </div>
+    `
   },
-  "28":{
-    label:"28 岁 · 灵性行走者",
-    tags:["自我觉察","开始松绑自己","在清醒和疲惫之间"],
-    summary:"你已经看清了很多模式，并且正在努力走出“自动驾驶”的人生。",
-    blocks:[
-      {
-        title:"你的状态像什么？",
-        text:[
-          "你知道自己的伤从哪里来，也能意识到哪些情绪是“旧伤复发”。",
-          "你不再那么容易被拉进烂关系，但也会因为太清醒而感到格外疲惫。"
-        ]
-      },
-      {
-        title:"你最深的需要",
-        text:[
-          "你需要的是“同频的同行者”——不仅能理解你的深度，还愿意在生活层面给你真实的支持。",
-          "当你允许自己偶尔普通、偶尔糊涂，你会发现清醒这件事变得没那么累。"
-        ]
-      },
-      {
-        title:"给你的提醒",
-        text:[
-          "你已经不再是当年的那个小孩了，可以试着把“必须坚强”这套盔甲慢慢卸下一点点。",
-          "你不是冷淡，你只是学会了把能量留给真正重要的地方。"
-        ]
-      }
-    ]
+
+  "28": {
+    title: "28 岁 · 灵性行走者 The Walker",
+    content: `
+    <div class="section">
+      <h2>你正在成为一个更完整的人</h2>
+      你已经脱离了童年的剧本，也逐渐不那么受外界影响。
+      <br><br>
+      你开始明白自己的需求，也开始学会拒绝。
+    </div>
+
+    <div class="section">
+      <h2>你的力量来自：稳定 + 清醒</h2>
+      你理解情绪，却不再被情绪吞没。
+      <br><br>
+      你经历过痛，因此更懂得温柔。
+    </div>
+
+    <div class="section">
+      <h2>你现在最需要的</h2>
+      更深的亲密、更真实的自我表达，以及更自由的生活方式。
+      <br><br>
+      你灵魂的下一阶段正在等你。
+    </div>
+    `
   },
-  "35":{
-    label:"35 岁 · 夜行巫者",
-    tags:["极强的洞察力","习惯一个人扛","情感很深但不轻易示人"],
-    summary:"你已经看穿了太多东西，也为此付出了很大的情绪价格。",
-    blocks:[
-      {
-        title:"你的状态像什么？",
-        text:[
-          "你对人的动机、情绪变化都非常敏锐，很多事别人还没反应，你心里已经过完一整套预案。",
-          "你很难完全信任某个人，但一旦认定，就会掏心掏肺。"
-        ]
-      },
-      {
-        title:"你最深的需要",
-        text:[
-          "你需要的是“可以一起扛事的人”，不是来拯救你，而是能并肩站在你身边。",
-          "当你愿意把一些真实的脆弱，交给那些值得的人，你会发现自己并没有想象中那么孤独。"
-        ]
-      },
-      {
-        title:"给你的提醒",
-        text:[
-          "你的清醒是礼物，但如果只用来防御，它就会变成牢笼。",
-          "适当地把“看透一切”的滤镜调低一点，生活会重新出现一些小奇迹。"
-        ]
-      }
-    ]
+
+  "35": {
+    title: "35 岁 · 夜行巫者 The Night Witch",
+    content: `
+    <div class="section">
+      <h2>你看得很透，也承受了很多</h2>
+      你比别人早一步成熟，也比别人早一步心累。
+      <br><br>
+      你表面冷静、靠谱，但内心其实非常疲惫。
+    </div>
+
+    <div class="section">
+      <h2>你的力量来自：洞察 + 深度</h2>
+      你能看见人性里的阴影，所以你很少轻易相信谁。
+      <br><br>
+      你越孤独，越强大。
+    </div>
+
+    <div class="section">
+      <h2>你现在最需要的</h2>
+      情绪释放、稳定的关系、一个不需要你扛的环境。
+      <br><br>
+      你的智慧不是冷漠，而是一种保护。
+    </div>
+    `
   },
-  "60":{
-    label:"60 岁 · 古老神谕者",
-    tags:["看淡人间","提前退休型灵魂","外冷内柔"],
-    summary:"你的灵魂像经历过很多轮回，对情绪和关系都有一种“已经见过了”的感觉。",
-    blocks:[
-      {
-        title:"你的状态像什么？",
-        text:[
-          "你对人性的复杂并不惊讶，更不热衷去改变谁，只是默默地保持自己的边界。",
-          "你看起来云淡风轻，其实心里有一片很柔软的地方，只是很少人有机会抵达。"
-        ]
-      },
-      {
-        title:"你最深的需要",
-        text:[
-          "你需要的是“被真正看懂一次”的感觉——不是被讨好，不是被仰望，而是被平视、被理解。",
-          "当你允许自己偶尔幼稚、偶尔冲动，你会发现灵魂的年龄可以来回切换，而不是永远只能当大人。"
-        ]
-      },
-      {
-        title:"给你的提醒",
-        text:[
-          "别把自己完全抽离出游戏，你依然可以参与、可以投入、可以再次认真地爱一次。",
-          "你不是已经活够了，你只是对旧的剧情失去了兴趣。是时候为自己写一点全新的台词。"
-        ]
-      }
-    ]
+
+  "60": {
+    title: "60 岁 · 古老神谕者 The Oracle",
+    content: `
+    <div class="section">
+      <h2>你已经“看破红尘”式地成熟</h2>
+      你经历得越多，越不执着。
+      <br><br>
+      你知道什么重要、什么不重要。
+    </div>
+
+    <div class="section">
+      <h2>你的力量来自：智慧 + 松弛</h2>
+      你对世界没有敌意，但你也不再奉献过度的能量。
+      <br><br>
+      你是一种很轻、很深、很松的力量。
+    </div>
+
+    <div class="section">
+      <h2>你现在最需要的</h2>
+      更自由的空间、更纯粹的关系、以及对自己更温柔的节奏。
+    </div>
+    `
   }
 };
 
-const profile = profiles[ageCode] || profiles["28"];
+// 设置页面内容
+document.getElementById("ageDisplay").innerText = age;
+document.getElementById("ageName").innerText = data[age].title;
+document.getElementById("scoreBox").innerText = `你的总分：${score} 分`;
+document.getElementById("content").innerHTML = data[age].content;
 
-document.getElementById("summary").innerText = profile.summary;
-
-const container = document.getElementById("reportContent");
-let html = `
-  <div class="pill-age">
-    灵魂心理年龄 <span class="big">${profile.label.split("·")[0]}</span>
-  </div>
-  <div class="pill-role">
-    <span>灵魂阶段</span>
-    <span>${profile.label.split("·")[1] || ""}</span>
-  </div>
-`;
-
-html += `<div class="chips">`;
-profile.tags.forEach(t=>{
-  html += `<div class="chip">${t}</div>`;
-});
-if(score){
-  html += `<div class="chip">本次得分：${score} 分</div>`;
-}
-html += `</div>`;
-
-profile.blocks.forEach(block=>{
-  html += `
-    <div class="section">
-      <div class="section-title">${block.title}</div>
-      ${block.text.map(p=>`<p>${p}</p>`).join("")}
-    </div>
-  `;
-});
-
-html += `
-  <div class="divider"></div>
-  <div class="cta">
-    <strong>下一步可以做什么？</strong><br>
-    · 可以把你最有共鸣的一段话记下来，当作这段时间的提醒。<br>
-    · 如果你想更系统地了解自己的原生家庭脚本、关系模式，可以再做一次「原生家庭影响测评」。<br>
-    · 也可以把这份报告发给一个你信任的人，让他/她看看：<em>这是不是你眼里的我？</em>
-  </div>
-
-  <a class="btn" href="https://f45y46y-collab.github.io/origin-family-test/" target="_blank">
-    返回测试主页 · 继续探索我的内在宇宙
-  </a>
-`;
-
-container.innerHTML = html;
 </script>
+
 </body>
 </html>
